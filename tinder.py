@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+import time
 
 """
 XPATHS
@@ -11,6 +12,8 @@ XPATHS
 like button(right swipe) - //*[@id="content"]/span/div/div[1]/div/div/main/div/div[1]/div/div[2]/button[3]/span/svg
 reject button(left swipe)- //*[@id="content"]/span/div/div[1]/div/div/main/div/div[1]/div/div[2]/button[1]/span/svg
 to be identified - '//*[@id="content"]/span/div/div[1]/div/aside/nav/div/div/div/div[1]/div/div[2]'))
+allow location button - '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[1]'
+enable notifications - not now button - '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[2]'
 """
 
 userPhone=input("enter Phone number")
@@ -38,7 +41,16 @@ continueButton.click()
 cont='//*[@id="modal-manager"]/div/div/div[2]/button'
 print("waiting for user to enter otp")
 element=WebDriverWait(driver,30)
-element.until(EC.presence_of_element_located((By.xpath,cont)))
+element.until(EC.presence_of_element_located((By.XPATH,cont)))
 #driver.implicitly_wait(30)
+time.sleep(15)
 continue2=driver.find_element_by_xpath(cont)
 continue2.click()
+time.sleep(3)
+allowLocationx = '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[1]'
+disableNotificationsx = '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[2]'
+allowLocation = driver.find_element_by_xpath(allowLocationx)
+allowLocation.click()
+time.sleep(2)
+disableNotifications=driver.find_element_by_xpath(disableNotificationsx)
+disableNotifications.click()
