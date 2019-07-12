@@ -10,9 +10,9 @@ import time
 TODO
 1 . Open Tinder and login using Phone number[DONE]
 2 . Wait till user enters OTP[DONE]
-3 . Ability to like / unlike cards[ERROR - element not found]
-3 . Read Description of cards[TO BE DONE]
-4 . segregate sentences and look for their presence in quote sites from internet[TO BE DONE]
+3 . Ability to like / unlike cards[DONE]
+4 . Read Description of cards[TO BE DONE]
+5 . segregate sentences and look for their presence in quote sites from internet[TO BE DONE]
 """
 
 
@@ -34,12 +34,15 @@ allowLocationx= '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[1]'
 #Disable Notification
 disableNotificationsx= '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[2]'
 #like button(right swipe) -
-RSwipe='//*[@id="content"]/span/div/div[1]/div/div/main/div/div[1]/div/div[2]/button[3]/span/svg'
+RSwipe='//*[@id="content"]/span/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/button[3]'
 #reject button(left swipe)-
 LSwipe='//*[@id="content"]/span/div/div[1]/div/div/main/div/div[1]/div/div[2]/button[1]/span/svg'
 #information button to view description
 Info='//*[@id="content"]/span/div/div[1]/div/div/main/div/div[1]/div/div[1]/div[3]/div[6]/div[2]/svg'
-
+#not now button for homescreen
+Nhome='//*[@id="modal-manager"]/div/div/div[3]/button[2]'
+#div for description
+Desc='//*[@id="content"]/span/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[2]/div[2]/div'
 """
 ---------------------------------------
 """
@@ -76,7 +79,7 @@ def login():
     continuePhone.click()
 
     '''Waiting for user to enter OTP'''
-    print("OTP PHASE")
+    print("WAITING FOR OTP")
     classNameChange="Bg($c-gray)" #class name does not have this string when otp is entered
     while True:
         time.sleep(2)
@@ -87,7 +90,7 @@ def login():
             print("OTP ENTERED")
             break
         else:
-            print("WAITING FOR OTP")
+            print(".",end="",sep="")
     continueOtp.click()
 
     ''' [NEEDS WORK] Clicking allow location and disable notification button '''
@@ -105,12 +108,15 @@ def login():
 
     
 def unlimitedLikes():
-    time.sleep(10)#for the tutorial animation to play out
+    time.sleep(5)#for the tutorial animation to play out
+    count=0
     '''Presses the like button once , every second'''
     while(True):
         like=driver.find_element_by_xpath(RSwipe)
         like.click()
         time.sleep(1)
+        count=count+1
+        print(count)
 
         
 runSelenium()
