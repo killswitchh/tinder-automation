@@ -109,13 +109,19 @@ def login():
     
 def unlimitedLikes():
     time.sleep(5)#for the tutorial animation to play out
+    print("Number of pictures liked=")
     count=0
     '''Presses the like button once , every second'''
     while(True):
+        if(count==6):
+            time.sleep(2)
+            notNow=driver.find_element_by_xpath(Nhome)
+            notNow.click()
         like=driver.find_element_by_xpath(RSwipe)
         like.click()
-        time.sleep(1)
         count=count+1
+        time.sleep(1)
+        
         print(count)
 
         
