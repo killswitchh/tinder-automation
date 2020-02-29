@@ -22,7 +22,7 @@ TODO
 -----------------XPATHS----------------
 """
 #login button in popup window -
-loginB='//*[@id="modal-manager"]/div/div/div[2]/div/div[3]/div[1]/button'
+loginB='//*[@id="modal-manager"]/div/div/div/div/div[3]/div[1]/button'
 #Phonenumber text box -
 EnterPhone='//*[@id="modal-manager"]/div/div/div[2]/div[2]/div/input'
 #OTP continue button -
@@ -30,7 +30,7 @@ otpCont='//*[@id="modal-manager"]/div/div/div[2]/button'
 #Phone Number continue button -
 phoneCont='//*[@id="modal-manager"]/div/div/div[2]/button'
 #Allow Location
-allowLocationx= '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[1]'
+allowLocationx= '//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]'
 #Disable Notification
 disableNotificationsx= '//*[@id="content"]/span/div/div[2]/div/div/div[3]/button[2]'
 #like button(right swipe) -
